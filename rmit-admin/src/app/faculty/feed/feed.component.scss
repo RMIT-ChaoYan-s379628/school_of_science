@@ -1,0 +1,203 @@
+@import 'global';
+
+.feed {
+    &__item {
+        font-family: 'Open Sans';
+        @extend %box-shadow;
+        margin-bottom: 20px;
+        background-color: white;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+        transition: all 0.3s linear;
+        &--deleted {
+            background-color: #e6d8d6;
+        }
+        &--blur {
+            filter: blur(2px);
+            pointer-events: none;
+        }
+        &--scale {
+            transform: scale(1.1);
+        }
+    }
+
+    &__header {
+        display: flex;
+        margin-bottom: 20px;
+        margin-left: 10px;
+        padding: 10px 10px 10px 10px;
+        border-bottom: 1px solid #006989;
+    }
+
+    &__header-item {
+        display: flex;
+        align-items: center;
+        margin-right: 30px;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    &__header-label {
+        font-weight: 600;
+        font-size: 14px;
+        text-transform: uppercase;
+        margin-right: 8px;
+        color: #006989;
+    }
+
+    &__header-value {
+        color: #172A3A;
+    }
+
+    &__deleted-message {
+        width: 100%;
+        padding: 5px;
+        background-color: #CA2E55;
+        color: white;
+        font-size: 14px;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    &__footer {
+        box-shadow: 0px -1px 5px 0px rgba(0,0,0,0.35);
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    &__action {
+        margin-right: 20px;
+        cursor: pointer;
+        text-transform: uppercase;
+        border: 1px solid green;
+        padding: 10px 20px;
+        border-radius: 3px;
+        min-width: 140px;
+        text-align: center;
+        transition: all 0.3s ease-in;
+        &--edit {
+            border-color: #2F6690;
+            color: #2F6690;
+            &:hover {
+                background: #2F6690;
+                color: white;
+            }
+        }
+
+        &--delete {
+            border-color: #CA2E55;
+            color: #CA2E55;
+            &:hover {
+                background: #CA2E55;
+                color: white;
+            }
+        }
+
+        &--cancel {
+            border-color: gray;
+            color: gray;
+            &:hover {
+                background: gray;
+                color: white;
+            }
+        }
+
+        &--save {
+            border-color: #21897E;
+            color: white;
+            background: #21897E;
+            &:hover {
+                opacity: 0.9;
+            }
+        }
+    }
+
+    &__body {
+        width: 100%;
+        padding: 0 40px 30px 40px;
+        display: flex;
+        align-items: center;
+    }
+
+    &__body-fields {
+        flex: 1 1 auto;
+    }
+
+    &__image {
+        width: 200px;
+        flex: 0 0 auto;
+        & > img {
+            width: 100%;
+        }
+    }
+    &__field {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #e5e5e5;
+        min-height: 50px;
+        word-break: break-all;
+        
+        & > input {
+            border: 1px solid #b7c1c5;
+            font-size: 16px;
+            padding: 7px 10px;
+            width: 100%;
+            outline: none;
+            border-radius: 3px;
+        }
+
+        & > select {
+            border: 1px solid #b7c1c5;
+            font-size: 16px;
+            padding: 7px 10px;
+            width: 100%;
+            outline: none;
+            border-radius: 3px;
+            height: 70%;
+            background-color: transparent;
+        }
+    }
+
+    &__field-label {
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 600;
+        text-align: right;
+        margin-right: 20px;
+        flex: 0 0 25%;
+    }
+
+    &__field-value {
+        font-size: 18px;
+        color: #0B3142;
+    }
+
+    &__modal-actions {
+        width: 100%;
+        display: flex;
+        margin-top: 30px;
+        justify-content: center;
+
+        & > span:last-child {
+            margin: 0;
+        }
+    }
+
+    &__image-select-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__remove-image {
+        margin-top: 20px;
+    }
+}

@@ -1,0 +1,49 @@
+<app-loading
+    *ngIf="isLoading"
+></app-loading>
+
+<div class="login picture-background">
+    <div class="login__container auth-white-container">
+        <h3 class="auth-header">
+            Login
+        </h3>
+        <div 
+            *ngIf="hasError || !formData.isValid"
+            class="login__errors-bar errors-bar"
+        >
+            {{errorText}}
+        </div>
+        <div class="login__input-group login__input-group--user">
+            <input 
+                type="text" 
+                class="input input--auth"
+                placeholder="user id or email"
+                [ngClass]="{'input--error': formData.errors.includes('userId')}"
+                [(ngModel)]="formData.userId"
+            >
+        </div>
+        <div class="login__input-group login__input-group--password">
+            <input 
+                type="password" 
+                class="input input--auth"
+                placeholder="password"
+                [ngClass]="{'input--error': formData.errors.includes('password')}"
+                [(ngModel)]="formData.password"
+            >
+        </div>
+        <div class="auth-link">
+            <a 
+                [routerLink]="['/auth/forgotpassword']"
+            >
+                Forgot password?
+            </a>
+        </div>
+
+        <button
+            class="action-button"
+            (click)="login()"
+        >
+            Login
+        </button>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+
+<div class="user-form">
+    <h4 class="user-form__header">
+        Add a new user
+    </h4>
+    <ng-container *ngIf="state === 'formView'">
+        <div
+            *ngIf="isErrorDisplayed"
+            class="errors-bar user-form__errors-bar"
+        >
+            {{errorText}}
+        </div>
+        <div class="user-form__form">
+             <div class="user-form__input-group">
+                <label class="input-label" for="department">department</label>
+                <select
+                    id="department"
+                    class="select"
+                    [ngClass]="{'select--error': formData.errors.includes('department')}"
+                    [(ngModel)]="formData.data.department"
+                >
+                    <option value=""></option>
+                    <ng-container *ngFor="let dep of departments">
+                        <option
+                            *ngIf="dep !== 'ALL'"
+                            [value]="dep"
+                        >{{dep}}</option>
+                    </ng-container>
+                </select>
+            </div>
+            <div class="user-form__input-group">
+                <label class="input-label" for="name">name</label>
+                <input
+                    [(ngModel)]="formData.data.name"
+                    id="name"
+                    type="text"
+                    class="input"
+                    [ngClass]="{'input--error': formData.errors.includes('name')}"
+                >
+            </div>
+            <div class="user-form__input-group">
+                <label class="input-label" for="userid">user email</label>
+                <input
+                    [(ngModel)]="formData.data.userId"
+                    id="userid"
+                    type="text"
+                    class="input"
+                    [ngClass]="{'input--error': formData.errors.includes('userId')}"
+                >
+            </div>
+        </div>
+        <div class="user-form__button-group">
+            <button
+                class="user-form__add-user"
+                (click)="createUser()"
+            >
+                ADD USER
+            </button>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="state === 'addedView'">
+        <h3 class="user-form__message">USER <strong>{{formData.data.userId}}</strong> ADDED</h3>
+        <div class="user-form__button-group user-form__button-group--left">
+            <button
+                class="user-form__add-user"
+                (click)="addAnotherUser()"
+            >
+                Add another user
+            </button>
+        </div>
+    </ng-container>
+
+</div>

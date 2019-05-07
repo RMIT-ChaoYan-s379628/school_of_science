@@ -1,0 +1,59 @@
+@import 'global';
+
+.user-form {
+    @extend %box-shadow;
+    padding: 20px;
+    border-radius: 5px;
+
+    &__header {
+        font-size: 24px;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+    }
+
+    &__form {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    &__input-group {
+        display: flex;
+        flex-direction: column;
+        flex: 0 0 30%;
+    }
+
+    &__button-group {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        &--left {
+            justify-content: flex-start;
+        }
+    }
+
+    &__add-user {
+        height: 40px;
+        padding: 0 40px;
+        background: #1b811b;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 600;
+        outline: none;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+
+    &__errors-bar {
+        margin-bottom: 15px;
+    }
+
+    &__message {
+        font-size: 20px;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+        font-weight: 400;
+    }
+}

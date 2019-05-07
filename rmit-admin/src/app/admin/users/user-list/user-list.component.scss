@@ -1,0 +1,150 @@
+@import 'global';
+
+.list {
+  margin-top: 30px;
+
+  &--no-user {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 24px;
+  }
+
+  &__row {
+    display: flex;
+    padding: 20px 10px;
+    position: relative;
+
+    &--header {
+      background: #003f5c;
+    }
+
+    &:nth-child(even) {
+      background: #eeeeee;
+    }
+  }
+
+  &__column {
+    flex: 1 1 18%;
+    display: flex;
+    justify-content: flex-start;
+    word-break: break-all;
+
+    &--big {
+      flex: 1 1 25%;
+    }
+
+    &--medium {
+      flex: 1 1 18%;
+    }
+
+    &--header {
+      font-size: 16px;
+      color: white;
+      text-transform: uppercase;
+    }
+  }
+
+  &__action_enable {
+    position: absolute;
+    right: 60px;
+    top: 18px;
+    width: 20px;
+    height: 20px;
+    background: url('../../../../assets/enable.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+
+  }
+
+  &__action_disable {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+    width: 20px;
+    height: 20px;
+    background: url('../../../../assets/remove.svg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+
+  &__action_delete {
+    position: absolute;
+    right: 35px;
+    top: 18px;
+    width: 20px;
+    height: 20px;
+    background: url('../../../../assets/delete.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+
+  }
+
+  &__modal-actions {
+    width: 100%;
+    display: flex;
+    margin-top: 30px;
+    justify-content: center;
+
+    & > span:last-child {
+      margin: 0;
+    }
+  }
+
+  &__action {
+    margin-right: 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    border: 1px solid green;
+    padding: 10px 20px;
+    border-radius: 3px;
+    min-width: 140px;
+    text-align: center;
+    transition: all 0.3s ease-in;
+
+    &--edit {
+      border-color: #2F6690;
+      color: #2F6690;
+
+      &:hover {
+        background: #2F6690;
+        color: white;
+      }
+    }
+
+    &--delete {
+      border-color: #CA2E55;
+      color: #CA2E55;
+
+      &:hover {
+        background: #CA2E55;
+        color: white;
+      }
+    }
+
+    &--cancel {
+      border-color: gray;
+      color: gray;
+
+      &:hover {
+        background: gray;
+        color: white;
+      }
+    }
+
+    &--save {
+      border-color: #21897E;
+      color: white;
+      background: #21897E;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+}

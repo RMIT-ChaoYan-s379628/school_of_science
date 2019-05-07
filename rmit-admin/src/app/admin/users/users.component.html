@@ -1,0 +1,31 @@
+<app-loading *ngIf="!isReady || isLoading"></app-loading>
+
+<div *ngIf="isReady" class="users">
+    <div class="users__container">
+        <div class="users__section">
+            <app-user-form
+                (actionInProgress)="processAction()"
+                [departments]="departments"
+            ></app-user-form>
+        </div>
+        <app-search
+            [placeholder]="'Search by user id'"
+            (doSearch)="search($event)"
+            (enterSearchMode)="isSearching = true"
+        ></app-search>
+        <div class="users__section">
+            <div
+                class="users__loading"
+                *ngIf="isSearching"
+            >LOADING...</div>
+            <app-user-list
+                *ngIf="!isSearching"
+                [faculties]="faculties"
+                [size]="currentSize"
+                (actionInProgress)="processAction()"
+                (pageChangeEvent)="processPageChangeRequest($event)"
+            ></app-user-list>
+        </div>
+
+    </div>
+</div>

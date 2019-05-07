@@ -1,0 +1,18 @@
+@import 'global';
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid gainsboro;
+    padding-top: 10px;
+
+    &__item {
+        margin: 15px;
+        cursor: pointer;
+        font-size: 22px;
+        color: brown;
+        &--selected {
+            color: blue;
+        }
+    }
+}

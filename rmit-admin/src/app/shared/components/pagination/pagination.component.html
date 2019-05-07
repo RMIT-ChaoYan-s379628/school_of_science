@@ -1,0 +1,10 @@
+<div class="pagination">
+    <span 
+        *ngFor="let item of pagesCount; let i = index"
+        class="pagination__item"
+        [ngClass]="{'pagination__item--selected': currentActivePageIndex === i}"
+        (click)="processChange(i)"
+    >
+        {{i + 1}}
+    </span>
+</div>

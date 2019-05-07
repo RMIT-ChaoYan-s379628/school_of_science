@@ -1,0 +1,39 @@
+<app-loading
+    *ngIf="!isReady"
+></app-loading>
+
+<div class="faculty__main">
+    <div class="faculty__container">
+        <app-global-error
+            *ngIf="globalError"
+        ></app-global-error>
+        <app-filter
+            [inEditMode]="inEditMode"
+            [filtersData]="departments"
+            (filterChange)="processFilterChange($event)"
+        ></app-filter>
+         <app-add-feed
+            [title]="'Add new contact'"
+            [feedObjects]="addContactObjects"
+            (addNewFeed)="addContact($event)"
+        ></app-add-feed>
+        <app-feed
+            *ngIf="isReady"
+            [type]="'contact'"
+            [headerItems]="headerItems"
+            [itemRemoveMessage]="'This contact has been removed'"
+            [feedItems]="contactData"
+            [bodyFields]="bodyFields"
+            [departments]="departments"
+            (editMode)="enterEditMode($event)"
+            (saveObject)="processSave($event)"
+            (deleteFeed)="processDelete($event)"
+        ></app-feed>
+        <app-pagination
+            *ngIf="size > 10"
+            [displayOnPage]="10"
+            [size]="size"
+            (pageChangeEvent)="processPageChangeEvent($event)"
+        ></app-pagination>
+    </div>
+</div>

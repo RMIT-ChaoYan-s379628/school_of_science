@@ -1,0 +1,200 @@
+@import 'global';
+
+.app-wrapper {
+    padding-top: 80px;
+    font-family: 'Museo';
+}
+
+.picture-background {
+    position: relative;
+    &:before {
+        content: '';
+        position: fixed;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        background: url('../assets/background.jpg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        filter: blur(10px);
+        width: 100%;
+        height: 100%;
+    }
+    &--admin {
+        &:before {
+        content: '';
+        position: fixed;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        background: url('../assets/admin-background.jpg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        filter: blur(10px);
+        width: 100%;
+        height: 100%;
+    }
+    }
+}
+
+.auth-white-container {
+    background: white;
+    border-radius: 30px;
+    @extend %box-shadow;
+    width: 500px;
+    padding: 30px;
+}
+
+.auth-header {
+    text-transform: uppercase;
+    font-size: 26px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-link {
+    display: block;
+    text-align: right;
+    margin-bottom: 15px;
+    color: #4b4ba5;
+    & > a {
+        text-decoration: none;
+        &:active {
+            color: #4b4ba5;
+        }
+    }
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.input {
+    height: 40px;
+    font-family: 'Museo';
+    width: 100%;
+    outline: none;
+    font-size: 20px;
+    padding: 0 10px;
+    border: none;
+    border-bottom: 1px solid grey;
+    background: transparent;
+
+    &--auth {
+        margin-bottom: 20px;
+        padding: 0 0 0 30px;
+    }
+
+    &--error {
+        border-color: red !important;
+    }
+}
+
+.select {
+    height: 40px;
+    font-family: 'Museo';
+    width: 100%;
+    outline: none;
+    font-size: 20px;
+    padding: 0 10px;
+    border: none;
+    border-bottom: 1px solid grey;
+    background: transparent;
+
+    &--error {
+        border-color: red;
+    }
+}
+
+.input-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    color: #4b4747;
+    font-weight: 600;
+}
+
+.action-button {
+    height: 50px;
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: 4px;
+    color: white;
+    background: #283328;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-family: "Museo bold";
+    transition: all 0.3s ease-in;
+    &:hover {
+        opacity: 0.9;
+    }
+}
+
+.errors-bar {
+    width: 100%;
+    padding: 15px 10px;
+    border-radius: 5px;
+    background: #eed63a;
+    color: #4c4c4c;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.faculty {
+    &__main {
+        display: flex;
+        justify-content: center;
+        padding-top: 50px;
+        min-height: calc(100vh - 80px);
+        background: #F9F7F3;
+    }
+    &__container {
+        max-width: 80vw;
+        padding-bottom: 60px;
+        min-width: 60vw;
+    }
+}
+
+.input-file {
+    & > div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        transition: all 0.3s ease-in;
+        cursor: pointer;
+        &:hover {
+            transform: scale(1.1);
+        }
+        &:before {
+            content: 'Choose an image'
+        }
+        &:after {
+            content: '📁';
+            font-size: 30px;
+            border: 1px solid #abb4bb;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+    }
+
+    &--selected {
+        & > div:before {
+            content: 'SELECTED!';
+        }
+
+        & > div:after {
+            content: '⤿'
+        }
+    }
+}

@@ -1,0 +1,75 @@
+.faculty {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__container {
+        width: 80%;
+    }
+    
+    &__sections-container {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        justify-content: center;
+    }
+
+    &__header {
+        margin-top: 50px;
+        font-size: 40px;
+        color: white;
+        margin-bottom: 50px;
+        text-shadow: 2px 2px #000000;
+        text-align: center;
+       
+    }
+
+    &__section {
+        flex-basis: 33%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-right: 1px solid gainsboro;
+        border-left: 1px solid gainsboro;
+        margin: 20px 0;
+    }
+
+    &__section-header {
+        font-size: 30px;
+        font-weight: 400;
+        text-transform: uppercase;
+        font-family: 'Museo bold';
+        margin-bottom: 20px;
+    }
+
+    &__icon {
+        width: 40%;
+        margin: 30px 0;
+    }
+
+    &__link {
+        font-size: 20px;
+        text-transform: uppercase;
+        cursor: pointer;
+        text-decoration: none;
+        color: black;
+        border: 1px solid black;
+        outline: none;
+        box-shadow: 0 0 20px #8d8d8d;
+        padding: 10px 30px;
+        border-radius: 5px;
+        transition: all 0.3s ease-in;
+        background: transparent;
+        &:hover {
+            background: black;
+            color: white;
+        }
+    }
+}
+
+

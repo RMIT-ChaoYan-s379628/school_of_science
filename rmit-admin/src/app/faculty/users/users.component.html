@@ -1,0 +1,47 @@
+<app-loading
+    *ngIf="!isReady"
+></app-loading>
+
+<div class="faculty__main">
+    <div class="faculty__container">
+        <app-global-error
+            *ngIf="globalError"
+        ></app-global-error>
+        <app-add-feed
+            [title]="'Add new user'"
+            [feedObjects]="addFeedObjects"
+            (addNewFeed)="addUser($event)"
+        ></app-add-feed>
+        <div class="search-box">
+            <app-search
+                [placeholder]="'Search by email address'"
+                (doSearch)="search($event)"
+                (enterSearchMode)="isSearching = true"
+            ></app-search>
+        </div>
+        <app-feed
+            *ngIf="isReady && !isSearching"
+            [type]="'user'"
+            [feedItems]="usersData"
+            [departments]="departments"
+            [bodyFields]="bodyFields"
+            [headerItems]="headerItems"
+            [secondaryButtonName]="'DISABLE'"
+            [confirmQuestion]="'Please confirm you want to disable the user'"
+            [hasEdit]="false"
+            (deleteFeed)="processDisable($event)"
+        ></app-feed>
+        <app-pagination
+            *ngIf="size > 10 && !isSearching"
+            [displayOnPage]="10"
+            [size]="size"
+            (pageChangeEvent)="processPageChangeEvent($event)"
+        ></app-pagination>
+        <div class="loading-box" *ngIf="isSearching">
+            LOADING...
+        </div>
+        <div class="loading-box" *ngIf="!usersData && !isSearching">
+            NO USER FOUND
+        </div>
+    </div>
+</div>

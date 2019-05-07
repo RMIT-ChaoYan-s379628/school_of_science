@@ -1,0 +1,36 @@
+@import 'global';
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    &__input-group {
+        position: relative;
+        &--user:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 30px;
+            width: 20px;
+            height: 20px;
+            background: url('../../../assets/user.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        &--password:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 30px;
+            width: 20px;
+            height: 20px;
+            background: url('../../../assets/password.svg');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    }
+}
+

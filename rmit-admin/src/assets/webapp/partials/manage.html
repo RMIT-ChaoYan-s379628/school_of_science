@@ -1,0 +1,32 @@
+<div class="well page" ng-init="onLoad()">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="pull-left" style="margin-left: 16px">Invite {{invitieType}}s</h2>
+            <h2 class="pull-left" style="margin-left: 16px">Show {{invitieType}}s</h2>
+        </div>
+        <div class="list-group">
+	        <div ng-repeat="invitie in invities track by $index" class="list-group-item" style="margin-top:16px">
+	            <div class="form-group label-floating">
+					<input type="text" ng-model="invities[$index]"/>
+					<input type="button" ng-click="removeInvitie($index)" value="Remove" />
+				</div>
+	        </div>
+			<input type="button" value="Add Another" ng-click="addAnotherInvitie()"/>
+			<br/><br/>
+			<input type="button" value="Invite" ng-click="submitInviteRequest()"/>
+    	</div>
+    	<div ng-show="invitiesSent">
+	    	Invited {{invitieType}}
+	    	<div class="list-group">
+		        <div ng-repeat="(key, value) in addedInvities" class="list-group-item" style="margin-top:16px">
+		            <div class="form-group label-floating">
+		            	<span>{{key}}</span>
+					</div>
+					<div ng-show="value">Valid</div>
+					<div ng-show="!value">Invalid</div>
+		        </div>
+	    	</div>
+    	</div>
+    </div>
+</div>

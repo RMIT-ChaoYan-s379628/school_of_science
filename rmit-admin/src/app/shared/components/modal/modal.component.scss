@@ -1,0 +1,36 @@
+@import 'global';
+
+.modal {
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: fixed;
+    z-index: 5000;
+
+    &__inner-container {
+        width: 550px;
+        height: 300px;
+        background: white;
+        border-radius: 3px;
+        position: absolute;
+        @extend %box-shadow;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
+        flex-direction: column;
+    }
+
+    &__x {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,94 @@
+<div class="add-feed">
+  <div
+    *ngIf="!editMode"
+    class="add-feed__button"
+  >
+    <button (click)="editMode = true">
+      {{title}}
+    </button>
+  </div>
+  <div *ngIf="editMode" class="add-feed__form">
+    <h3 class="add-feed__header">
+      {{title}}
+      <span (click)="editMode = false">
+                X
+            </span>
+    </h3>
+    <div class="add-feed__form-container">
+      <ng-container *ngFor="let item of feedObjects; let i = index">
+        <div class="add-feed__form-field">
+          <label [for]="'addFeedField' + i" class="add-feed__label">
+            {{item.label}}
+          </label>
+          <div class="add-feed__value" *ngIf="item.type === 'authorId'">
+            {{(authService.userId)}}
+          </div>
+          <textarea style="height:3rem;width:60%;font-size:16px;"
+                    *ngIf="item.type === 'input'"
+                    maxlength="200"
+                    type="text"
+                    [(ngModel)]="feedObject[item.key]"
+          ></textarea>
+          <div style="width:60%;" *ngIf="item.type === 'ckeditor'">
+            <ckeditor name="ckeditor" id="ckeditor" [(ngModel)]="feedObject[item.key]" debounce="100"
+                      [config]="config"></ckeditor>
+          </div>
+          <input
+            *ngIf="item.type === 'date'"
+            type="date"
+            [ngModel]="feedObject[item.key] | date:'yyyy-MM-dd'"
+            (ngModelChange)="feedObject[item.key] = $event"
+          >
+          <select
+            [(ngModel)]="feedObject[item.key]"
+            *ngIf="item.type === 'select'"
+          >
+            <option
+              *ngFor="let option of item.options"
+              [value]="option"
+            >{{option}}</option>
+          </select>
+          <input
+            *ngIf="item.type === 'boolean'"
+            type="checkbox"
+            [(ngModel)]="feedObject[item.key]"
+          >
+          <div
+            *ngIf="item.type === 'browse'"
+            class="input-file"
+            [ngClass]="{'input-file--selected': browseValue}"
+          >
+            <div
+              (click)="openUpload()"
+            >
+              <ng-container *ngIf="browseValue">
+                ...{{browseValue.substr(browseValue.length - 10, browseValue.length - 1)}}
+              </ng-container>
+            </div>
+            <input
+              #browse
+              type="file"
+              style="visibility: hidden"
+              accept="image/x-png,image/gif,image/jpeg"
+              (change)="inputChange()"
+            >
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="add-feed__footer">
+      <button
+        class="add-feed__action add-feed__action--cancel"
+        (click)="editMode = false"
+      >
+        CANCEL
+      </button>
+      <button
+        (click)="addFeed()"
+        class="add-feed__action add-feed__action--add">
+        ADD
+      </button>
+    </div>
+  </div>
+</div>

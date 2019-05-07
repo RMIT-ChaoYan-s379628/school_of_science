@@ -1,0 +1,92 @@
+<app-loading
+    *ngIf="!isReady"
+></app-loading>
+
+<div *ngIf="isReady" class="calendar">
+    <div class="calendar__container">
+        <div class="calendar__add-container">
+            <h2 class="calendar__header">ADD A NEW CALENDAR EVENT</h2>
+            <div class="calendar__item calendar__item--add">
+                <div class="calendar__input-group">
+                    <input
+                        [(ngModel)]="addingCalendar.name"
+                        [ngClass]="{'input--error': addingCalendar.nameError}" 
+                        type="text"
+                        placeholder="event"
+                    >
+                </div>
+                <div class="calendar__input-group">
+                    <input
+                        [(ngModel)]="addingCalendar.date"
+                        [ngClass]="{'input--error': addingCalendar.dateError}"
+                        type="date"
+                        placeholder="date"
+                    >
+                </div>
+                <div class="calendar__edit">
+                    <button
+                        (click)="add()"
+                    >ADD</button>
+                </div>
+            </div>
+        </div>
+        <div class="calendar__items-container">
+            <h2 class="calendar__header">EXISTING CALENDAR EVENTS</h2>
+            <div class="calendar__item calendar__item--header">
+                <span>EVENT</span>
+                <span>DATE</span>
+            </div>
+            <ng-container *ngFor="let item of calendarData; let i = index">
+                <div class="calendar__item">
+                    <div class="calendar__input-group">
+                        <span>
+                            {{item.name}}
+                        </span>
+                    </div>
+                    <div class="calendar__input-group">
+                        <span *ngIf="currentEditingIndex !== i">
+                            {{item.date}}
+                        </span>
+                        <input 
+                            [(ngModel)]="currentEditingItem.date"
+                            *ngIf="currentEditingIndex === i"
+                            type="date" 
+                            [id]="'calendar' + i"
+                        >
+                    </div>
+                    <div class="calendar__edit">
+                        <span 
+                            *ngIf="currentEditingIndex !== i"
+                            class="calendar__edit-icon"
+                            (click)="enterEditMode(i)"
+                        >
+                            ✎
+                        </span>
+                        <span 
+                            *ngIf="currentEditingIndex !== i"
+                            class="calendar__edit-icon calendar__edit-icon--delete"
+                            (click)="delete(i)"
+                        >
+                            ×
+                        </span>
+                        <ng-container *ngIf="currentEditingIndex === i">
+                            <span
+                                class="calendar__edit-icon"
+                                (click)="saveEdit()"
+                            >
+                                💾
+                            </span>
+                            <span
+                                class="calendar__edit-icon"
+                                (click)="cancelEditing()"
+                            >
+                                🚫
+                            </span>
+
+                        </ng-container>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

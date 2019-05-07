@@ -1,0 +1,156 @@
+<div class="feed">
+    <ng-container *ngFor="let item of feedItems">
+        <div
+            class="feed__item"
+            [ngClass]="{
+                'feed__item--deleted': item.deleted || (item.status && item.status === 'DISABLED'),
+                'feed__item--blur': currentEditingFeedId && currentEditingFeedId !== (item.feedId || item.contactId || item.userId),
+                'feed__item--scale': currentEditingFeedId && currentEditingFeedId === (item.feedId || item.contactId || item.userId)
+            }"
+        >
+            <div 
+                *ngIf="item.deleted || (item.status && item.status === 'DISABLED')" class="feed__deleted-message">
+                {{ item.status ? 'This user is disabled' : itemRemoveMessage}}
+            </div>
+            <div class="feed__header">
+                <div 
+                    *ngFor="let obj of headerItems"
+                    class="feed__header-item"
+                >
+                    <span class="feed__header-label">{{obj['title']}}</span>
+                    <span class="feed__header-value">
+                        {{
+                            obj['title'] === 'Author:' || obj['title'] === 'Status:' ? item[obj['key']] : utilityService.formatDate(item[obj['key']])
+                        }}
+                    </span>
+                </div>
+            </div>
+            <div class="feed__body">
+                <div class="feed__body-fields" >
+                    <ng-container *ngFor="let obj of bodyFields; let i = index">
+                        <div class="feed__field">
+                            <label [for]="'currentField' +  i" class="feed__field-label">{{obj.title}}</label>
+                            <span 
+                                *ngIf="currentEditingFeedId !== (item.feedId || item.contactId || item.userId)"
+                                class="feed__field-value"
+                            >
+                                <ng-container *ngIf="obj.type === 'date'">
+                                    {{utilityService.formatDate(item[obj.key])}}
+                                </ng-container>
+    
+                                <ng-container *ngIf="obj.type === 'toggle'">
+                                    {{ item[obj.key] ? 'ENABLED' : 'DISABLED'}}
+                                </ng-container>
+    
+                                <ng-container *ngIf="obj.type !== 'toggle' && obj.type !== 'date'">
+                                <div [innerHTML]="item[obj.key]"></div>
+                                </ng-container>
+                            </span>
+                            <ng-container *ngIf="currentEditingFeedId === (item.feedId || item.contactId || item.userId)">
+                                <input 
+                                    [id]="'currentField' + i"
+                                    *ngIf="obj.type === 'input'"
+                                    maxlength="200"
+                                    type="text"
+                                    [(ngModel)]="currentEditingFeed[obj.key]"
+                                >
+                                <select
+                                    [id]="'currentField' + i"
+                                    *ngIf="obj.type === 'select'"
+                                    [(ngModel)]="currentEditingFeed[obj.key]"
+                                >
+                                    <option 
+                                        *ngFor="let dep of departments"
+                                        [value]="dep"
+                                    >{{dep}}</option>
+                                </select>
+                                <input 
+                                    [id]="'currentField' + i"
+                                    *ngIf="obj.type === 'toggle'"
+                                    type="checkbox"
+                                    [(ngModel)]="currentEditingFeed[obj.key]"
+                                >
+                                <input 
+                                    [id]="'currentField' + i"
+                                    *ngIf="obj.type === 'date'"
+                                    type="date"
+                                    [ngModel]="currentEditingFeed[obj.key] | date:'yyyy-MM-dd'"
+                                    (ngModelChange)="currentEditingFeed[obj.key] = $event"
+                                >
+                            </ng-container>
+                        </div>
+                    </ng-container>
+                </div>
+                <div *ngIf="hasImage" class="feed__image">
+                    <img *ngIf="currentEditingFeedId !== (item.feedId || item.contactId || item.userId)" [src]="item.imageurl" alt="">
+                    <div 
+                        *ngIf="currentEditingFeedId === (item.feedId || item.contactId || item.userId)" 
+                        class="input-file feed__image-select-box"
+                        [ngClass]="{'input-file--selected': browseValue}"
+                    >
+                        <div
+                            (click)="openUpload()"
+                        >
+                            <ng-container *ngIf="browseValue">
+                                ...{{browseValue.substr(browseValue.length - 10, browseValue.length - 1)}}
+                            </ng-container>
+                        </div>
+                        <input 
+                            #browse
+                            style="visibility: hidden"
+                            type="file"
+                            accept="image/x-png,image/gif,image/jpeg"
+                            (change)="inputChange()"
+                        >
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="item.status ? item.status === 'ACTIVE' : !item.deleted" class="feed__footer">
+                <ng-container *ngIf="currentEditingFeedId !== (item.feedId || item.contactId || item.userId)">
+                    <span 
+                        *ngIf="hasEdit"
+                        class="feed__action feed__action--edit"
+                        (click)="enterEditMode((item.feedId || item.contactId || item.userId))"
+                    >EDIT</span>
+                    <span 
+                        class="feed__action feed__action--delete"
+                        (click)="openDeleteConfirmation((item.feedId || item.contactId || item.userId))"
+                    >{{ secondaryButtonName || 'DELETE'}}</span>
+                </ng-container>
+                <ng-container *ngIf="currentEditingFeedId === (item.feedId || item.contactId || item.userId)">
+                    <span 
+                        class="feed__action feed__action--cancel"
+                        (click)="cancelEdit()"
+                    >CANCEL</span>
+                    <span 
+                        class="feed__action feed__action--save"
+                        (click)="save()"
+                    >
+                        SAVE
+                    </span>
+                </ng-container>
+            </div>
+        </div>
+    </ng-container>
+</div>
+
+<app-modal
+    *ngIf="confirmModalDisplayed"
+    (action)="processModalAction($event)"
+>
+    {{ confirmQuestion || 'Are you sure you want to delete the feed?'}}
+    <div class="feed__modal-actions">
+        <span 
+            (click)="processModalAction('close')"
+            class="feed__action feed__action--cancel">
+            CANCEL
+        </span>
+        <span 
+            (click)="emitDelete()"
+            class="feed__action feed__action--save">
+            CONFIRM
+        </span>
+    </div>
+</app-modal>

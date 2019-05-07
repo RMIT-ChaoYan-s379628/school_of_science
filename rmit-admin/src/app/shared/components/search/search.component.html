@@ -1,0 +1,8 @@
+<div class="search">
+    <input 
+        #searchField
+        type="text"
+        [placeholder]="'🔍  ' + placeholder"
+        (input)="enterSearchMode.emit(true)"
+    >
+</div>

@@ -1,0 +1,57 @@
+@import 'global';
+
+.nav {
+    position: fixed;
+    width: 100vw;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    background: white;
+    z-index: 100;
+    @extend %box-shadow;
+    &__logo {
+        background-image: url('https://sso-cas.rmit.edu.au/rmitcas/images/logo.png');
+        height: 70%;
+        width: 100px;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    &__button {
+        background: transparent;
+        border: 1px solid black;
+        outline: none;
+        cursor: pointer;
+        color: black;
+        padding: 10px 30px;
+        font-size: 14px;
+        border-radius: 5px;
+        transition: all 0.3s ease-in;
+        &:hover {
+            background: black;
+            color: white;
+        }
+    }
+
+    &__link {
+        font-size: 18px;
+        font-family: 'Museo';
+        color: #19154f;
+        text-decoration: none;
+        margin: 0 15px;
+        &--selected {
+            color: #84151d;
+        }
+    }
+
+    &__change-pass {
+        font-size: 12px;
+        margin-top: 10px;
+        text-align: center;
+        display: block;
+        text-decoration: none;
+        color: black;
+    }
+}

@@ -1,0 +1,11 @@
+<div class="filter" [ngClass]="{'filter--blur': inEditMode}">
+    <ng-container *ngFor="let filter of filters">
+        <div 
+            class="filter__item"
+            (click)="filterSelect(filter)"
+            [ngClass]="{'filter__item--selected': filter.isSelected}"
+        >
+            {{filter.name}}
+        </div>
+    </ng-container>
+</div>

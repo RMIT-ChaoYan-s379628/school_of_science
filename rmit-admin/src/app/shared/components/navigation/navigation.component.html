@@ -1,0 +1,38 @@
+<nav class="nav">
+    <div class="nav__logo">
+        
+    </div>
+    <ng-container *ngIf="userRole === 'ADMIN'">
+        <div class="nav__menu">
+            <a 
+                routerLink="admin" 
+                class="nav__link"
+                [ngClass]="{'nav__link--selected': currentRoute === '/admin'}"
+            >HOME</a>
+            <a [routerLinkActive]="'nav__link--selected'" routerLink="admin/users" class="nav__link">USERS</a>
+            <a [routerLinkActive]="'nav__link--selected'" routerLink="admin/analytics" class="nav__link">ANALYTICS</a>
+            <a [routerLinkActive]="'nav__link--selected'" routerLink="admin/calendars" class="nav__link">CALENDARS</a>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="userRole === 'CLIENT'">
+        <div class="nav__menu">
+            <a [routerLinkActive]="'nav__link--selected'" routerLink="faculty/events" class="nav__link">EVENTS</a>
+            <a [routerLinkActive]="'nav__link--selected'" routerLink="faculty/news" class="nav__link">NEWS</a>
+            <a [routerLinkActive]="'nav__link--selected'" routerLink="faculty/deadlines" class="nav__link">DEADLINES</a>
+            <a [routerLinkActive]="'nav__link--selected'" routerLink="faculty/contacts" class="nav__link">CONTACTS</a>
+            <a [routerLinkActive]="'nav__link--selected'" routerLink="faculty/users" class="nav__link">USERS</a>
+        </div>
+    </ng-container>
+    <div *ngIf="isAuthenticated" class="nav__logout">
+        <button
+            class="nav__button"
+            (click)="logout()"
+        >
+            LOG OUT
+        </button>
+        <a 
+            routerLink="/auth/changepassword"
+            class="nav__change-pass"
+        >CHANGE PASSWORD</a>
+    </div>
+</nav>

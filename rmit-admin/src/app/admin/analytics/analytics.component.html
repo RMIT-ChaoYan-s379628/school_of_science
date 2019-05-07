@@ -1,0 +1,33 @@
+<app-loading
+    *ngIf="!isReady"
+></app-loading>
+
+<div class="analytics" *ngIf="isReady">
+    <h2 class="analytics__header">FEED DETAILS</h2>
+    <div class="analytics__container">
+        <ng-container *ngFor="let item of analyticsData; let i = index">
+            <div 
+                class="analytics__item"
+                [ngStyle]="{'border': '30px solid ' + chartColors[i]}"
+            >
+                <p class="analytics__label">{{item.key}}</p>
+                <p class="analytics__value">{{item.value}}</p>
+            </div>
+        </ng-container>
+    </div>
+    <h2 class="analytics__header">USERS AND ADMINS</h2>
+    <div class="analytics__container">
+        <div class="analytics__item"
+            [ngStyle]="{'border': '30px solid ' + chartColors[3]}"  
+        >
+            <p class="analytics__label">ACTIVE ADMINS</p>
+            <p class="analytics__value">{{activeAdmins}}</p>
+        </div>
+        <div class="analytics__item"
+            [ngStyle]="{'border': '30px solid ' + chartColors[4]}"
+        >
+            <p class="analytics__label">ACTIVE USERS</p>
+            <p class="analytics__value">{{activeUsers}}</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+@import 'global';
+
+.filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    transition: all 0.3s linear;
+    &--blur {
+        filter: blur(2px);
+        pointer-events: none;
+    }
+    
+    &__item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid gray;
+        color: gray;
+        border-radius: 20px;
+        font-size: 16px;
+        padding: 10px 18px 10px 55px;
+        margin-right: 30px;
+        margin-bottom: 15px;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.3s ease-in;
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border: 1px solid gray;
+            border-radius: 50%;
+            left: 18px;
+        }
+
+        &--selected {
+            border-color: #119DA4;
+            background-color: #119DA4;
+            color: white;
+            font-weight: 600;
+            &:before {
+                content: '✓';
+                font-size: 12px;
+                background-color: white;
+                border-color: white;
+                color: #119DA4;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+}

@@ -1,0 +1,37 @@
+<app-loading
+    *ngIf="!isReady"
+></app-loading>
+
+<div class="faculty__main">
+    <div class="faculty__container">
+        <app-global-error
+            *ngIf="globalError"
+        ></app-global-error>
+        <app-filter
+            [inEditMode]="inEditMode"
+            [filtersData]="departments"
+            (filterChange)="processFilterChange($event)"
+        ></app-filter>
+        <app-add-feed
+            [title]="'Add news'"
+            [feedObjects]="addFeedObjects"
+            (addNewFeed)="addFeed($event)"
+        ></app-add-feed>
+        <app-feed
+            [bodyFields]="bodyFields"
+            *ngIf="isReady"
+            [feedItems]="newsData"
+            [departments]="departments"
+            (saveObject)="processSave($event)"
+            (editMode)="enterEditMode($event)"
+            (deleteFeed)="processDelete($event)"
+            [hasImage]="true"
+        ></app-feed>
+        <app-pagination
+            *ngIf="size > 10"
+            [displayOnPage]="10"
+            [size]="size"
+            (pageChangeEvent)="processPageChangeEvent($event)"
+        ></app-pagination>
+    </div>
+</div>

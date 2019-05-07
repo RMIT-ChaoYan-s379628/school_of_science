@@ -1,0 +1,49 @@
+<div class="list" *ngIf="faculties">
+  <div class="list__row list__row--header">
+    <span class="list__column list__column--header list__column--big">Name</span>
+    <span class="list__column list__column--header list__column--big">User id</span>
+    <span class="list__column list__column--header list__column--medium">Department</span>
+    <span class="list__column list__column--header list__column--medium">Status</span>
+  </div>
+
+  <div class="list__row" *ngFor="let faculty of faculties">
+    <span class="list__column list__column--big">{{faculty.name}}</span>
+    <span class="list__column list__column--big">{{faculty.userId}}</span>
+    <span class="list__column list__column--medium">{{faculty.department}}</span>
+    <span class="list__column">{{faculty.status}}</span>
+    <div (click)="enableUser(faculty.userId)" class="list__action_enable"></div>
+    <div (click)="disableUser(faculty.userId)" class="list__action_disable"></div>
+    <div (click)="openDeleteConfirmation(faculty.userId)"  class="list__action_delete">
+      <!--    <div (click)="deleteUser(faculty.userId)" class="list__action_delete"></div>-->
+    </div>
+
+    <app-pagination
+      *ngIf="size > 10"
+      [displayOnPage]="10"
+      [size]="size"
+      (pageChangeEvent)="processPageChangeEvent($event)"
+    ></app-pagination>
+  </div>
+
+  <div class="list--no-user" *ngIf="!faculties">
+    No user found
+  </div>
+
+  <app-modal
+    *ngIf="confirmModalDisplayed"
+    (action)="processModalAction($event)"
+  >
+    {{ confirmQuestion || 'Are you sure you want to delete this faculty?'}}
+    <div class="list__modal-actions">
+        <span
+          (click)="processModalAction('close')"
+          class="list__action list__action--cancel">
+            CANCEL
+        </span>
+      <span
+        (click)="emitDelete()"
+        class="list__action list__action--save">
+            CONFIRM
+        </span>
+    </div>
+  </app-modal>

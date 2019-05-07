@@ -1,0 +1,18 @@
+<div class="faculty picture-background picture-background--admin">
+    <div class="faculty__container">
+        <h3 class="faculty__header">
+            WELCOME TO YOUR ADMIN PORTAL Test
+        </h3>
+        <div class="faculty__sections-container">
+            <ng-container *ngFor="let section of facultySections">
+                <div class="faculty__section">
+                    <h3 class="faculty__section-header">
+                        {{section.name}}
+                    </h3>
+                    <!-- <img [src]="section.icon" alt="" class="faculty__icon"> -->
+                    <button [routerLink]="section.link" class="faculty__link">{{section.buttonText}}</button>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

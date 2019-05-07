@@ -1,0 +1,15 @@
+.users {
+    display: flex;
+    justify-content: center;
+    
+    &__container {
+        width: 960px;
+        margin: 50px 30px;
+    }
+
+    &__loading {
+        text-align: center;
+        font-size: 16px;
+        margin-top: 30px;
+    }
+}
