@@ -1,0 +1,35 @@
+server.port: ${PORT:8100}
+
+
+logging.level.org.springframework: DEBUG
+logging.level.org.hibernate: ERROR
+
+spring:
+  application:
+    name: rmit-engine
+  data:
+    mongodb:
+      #      uri: mongodb://localhost:27017/rmit-engine
+      uri:  mongodb://rmit:rmit256@ds163842.mlab.com:63842/rmit-engine
+
+rmit-notification:
+  ribbon:
+        listOfServers: https://rmit-notification.herokuapp.com/
+#    listOfServers: http://localhost:8880
+
+rmit-mailer-service:
+  ribbon:
+#    listOfServers: https://rmit-mailer.herokuapp.com/
+     listOfServers: http://localhost:8880
+ribbon:
+  eureka:
+    enabled: false
+
+
+rmit:
+  aws:
+    access_key_id: AKIAJEXB6ITTLWTL3Z5Q
+    secret_access_key: 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
+  s3:
+    bucket: rmithybapp
+    region: us-east-1

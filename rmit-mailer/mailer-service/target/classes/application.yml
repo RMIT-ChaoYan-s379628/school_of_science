@@ -1,0 +1,21 @@
+server.port: ${PORT:8880}
+
+spring:
+  application:
+    name: rmit-mailer-service
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: rmitapphybrid@gmail.com
+    password: rmit@256
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls.enable: true
+
+mail:
+  ccAddresses: rmitapphybrid@gmail.com
+  
+host:
+  address: https://rmit-admin.herokuapp.com/

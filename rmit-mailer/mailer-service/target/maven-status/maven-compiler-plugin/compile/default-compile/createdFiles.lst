@@ -1,0 +1,4 @@
+com/rmit/mailer/service/service/impl/SendMailServiceImpl.class
+com/rmit/mailer/service/MailerServiceApplication.class
+com/rmit/mailer/service/controller/SendMailController.class
+com/rmit/mailer/service/service/ISendMailService.class

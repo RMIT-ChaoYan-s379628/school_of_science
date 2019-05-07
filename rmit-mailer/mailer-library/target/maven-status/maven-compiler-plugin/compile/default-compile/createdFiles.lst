@@ -1,0 +1,5 @@
+com/rmit/mailer/library/request/ForgotPasswordMailRequest.class
+com/rmit/mailer/library/request/WelcomeMessageRequest.class
+com/rmit/mailer/library/request/ServiceRequest.class
+com/rmit/mailer/library/response/ServiceResponse.class
+com/rmit/mailer/library/request/SendVerificationMailRequest.class

@@ -1,0 +1,48 @@
+server.port: ${PORT:8090}
+
+logging.level.org.springframework: DEBUG
+logging.level.org.hibernate: ERROR
+
+spring:
+  application:
+    name: rmit-gateway
+  data:
+    mongodb:
+      uri: mongodb://rmit:rmit256@ds261302.mlab.com:61302/rmit
+#      uri: mongodb://localhost/rmit
+
+security:
+  user:
+    name: admin@rmit.edu.au
+    password: password
+      
+zuul:
+  ignored-headers: Access-Control-Allow-Credentials, Access-Control-Allow-Origin
+  routes:
+    engine:
+      path: /engine/**
+#      url: https://rmit-engine.herokuapp.com/
+      url: http://localhost:8100
+      
+    notification:
+      path: /notification/**
+      url: https://rmit-notification.herokuapp.com/
+
+rmit-mailer-service:
+  ribbon:
+#    listOfServers: https://rmit-mailer.herokuapp.com/
+    listOfServers: http://localhost:8880
+    
+rmit-engine:
+  ribbon:
+#    listOfServers: https://rmit-engine.herokuapp.com/
+    listOfServers: http://localhost:8100
+
+ribbon:
+  eureka:
+    enabled: false
+      
+      
+      
+      
+      
