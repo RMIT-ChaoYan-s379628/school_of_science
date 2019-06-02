@@ -7,20 +7,28 @@
 
     & > button {
       font-size: 20px;
-      border: 1px solid #EB8258;
-      background: transparent;
+      //border: 1px solid #EB8258;
+      border: 1px solid #e60028;
+      //background: transparent;
       border-radius: 6px;
       outline: none;
-      color: #EB8258;
+      //color: #EB8258;
+      color: white;
+      background: #e60028;
+
       padding: 10px 40px;
       cursor: pointer;
       text-transform: uppercase;
       transition: all 0.3s linear;
       position: relative;
+      //add
+      width: 50%;
 
       &:hover {
-        background: #EB8258;
-        color: white;
+        //background: #EB8258;
+        background: rgba(230,6,40,0.7);
+        //add
+        //color: white;
       }
     }
   }
@@ -30,43 +38,53 @@
     top: 0;
     height: 100vh;
     width: 100vw;
-    background: white;
+    background: rgba(255,255,255,0.7);
     z-index: 8000;
     left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
   }
 
   &__form-container {
     border: 1px solid #d8d7d7;
-    border-radius: 20px;
+    //border-radius: 20px;
     width: 70vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 10px 20px;
     overflow: auto;
+    //add
+    background: #FFFFFF;
   }
 
   &__header {
     width: 70vw;
     font-size: 30px;
-    margin-bottom: 20px;
-    color: #4f4545;
+    //margin-bottom: 20px;
+    //color: #4f4545;
+    color: #e60028;
     text-transform: uppercase;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
 
+    background: #FFFFFF;
+    line-height: 60px;
+    border-radius: 15px 15px 0 0;
+
     & > span {
       position: absolute;
       right: 0;
       font-family: 'Open sans';
       cursor: pointer;
-      font-size: 38px;
+      //font-size: 38px;
+      font-size: 30px;
+      padding: 0 20px;
     }
   }
 
@@ -74,7 +92,8 @@
     font-size: 16px;
     font-weight: 600;
     text-transform: uppercase;
-    color: #8c8c8c;
+    //color: #8c8c8c;
+    color: #00014a;
   }
 
   &__form-field {
@@ -94,7 +113,11 @@
     display: flex;
     width: 70vw;
     justify-content: center;
-    margin-top: 20px;
+    //margin-top: 20px;
+    padding: 15px 0;
+    //add
+    background: #fff;
+    border-radius: 0 0 15px 15px;
   }
 
   &__action {
@@ -109,20 +132,31 @@
     transition: all 0.3s linear;
 
     &--cancel {
-      border: 1px solid gray;
-      color: gray;
+      //border: 1px solid gray;
+      border: 1px solid #00014a;
+      //color: gray;
+      color: #FFFFFF;
       margin-right: 10px;
+      //add
+      background-color: #00014a;
+      border-radius: 5px;
 
       &:hover {
-        background: gray;
+        //background: gray;
+        //add
+        opacity: 0.9;
         color: white;
       }
     }
 
     &--add {
-      border: 1px solid #21897E;
+      //border: 1px solid #21897E;
+      border: 1px solid #e60028;
       color: white;
-      background-color: #21897E;
+      //background-color: #21897E;
+      background-color: #e60028;
+      //add
+      border-radius: 5px;
 
       &:hover {
         opacity: 0.9;

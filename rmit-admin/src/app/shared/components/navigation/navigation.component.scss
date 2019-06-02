@@ -10,6 +10,8 @@
     padding: 0 30px;
     background: white;
     z-index: 100;
+    //add
+    box-shadow: 2px 4px 6px 0px rgba(17, 17, 17, 0.75);
     @extend %box-shadow;
     &__logo {
         background-image: url('https://sso-cas.rmit.edu.au/rmitcas/images/logo.png');
@@ -21,16 +23,20 @@
     }
     &__button {
         background: transparent;
-        border: 1px solid black;
+        //border: 1px solid black;
+        border: none;
         outline: none;
         cursor: pointer;
-        color: black;
+        //color: black;
+        color: white;
+        background-color: #e60028;
         padding: 10px 30px;
         font-size: 14px;
         border-radius: 5px;
         transition: all 0.3s ease-in;
         &:hover {
-            background: black;
+            //background: black;
+            background: rgba(230,0,40,0.7);
             color: white;
         }
     }
@@ -38,11 +44,16 @@
     &__link {
         font-size: 18px;
         font-family: 'Museo';
-        color: #19154f;
+        //color: #19154f;
+        color: #00014A;
         text-decoration: none;
         margin: 0 15px;
         &--selected {
-            color: #84151d;
+            //color: #84151d;
+            color: #fff;
+            height: 40px;
+            background: #e60028;
+            padding: 30px;
         }
     }
 

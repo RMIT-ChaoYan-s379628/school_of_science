@@ -4,7 +4,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin-bottom: 30px;
+    //margin-bottom: 30px;
+    margin-bottom: 18px;
     transition: all 0.3s linear;
     &--blur {
         filter: blur(2px);
@@ -15,9 +16,14 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 1px solid gray;
-        color: gray;
-        border-radius: 20px;
+        //border: 1px solid gray;
+        //color: gray;
+        border: 1px solid #fac900;
+        color: white;
+        background: #00014a;
+        width: 30%;
+        border-radius: 5px;
+        //border-radius: 20px;
         font-size: 16px;
         padding: 10px 18px 10px 55px;
         margin-right: 30px;
@@ -34,16 +40,27 @@
             position: absolute;
             width: 18px;
             height: 18px;
-            border: 1px solid gray;
+            //border: 1px solid gray;
+            border: 1px solid #fac900;
+            //background: #fac900;
+            //background: rgba(250,201,0,0.7);
+            background: transparent;
             border-radius: 50%;
             left: 18px;
         }
 
         &--selected {
-            border-color: #119DA4;
-            background-color: #119DA4;
-            color: white;
+            //border-color: #119DA4;
+            //background-color: #119DA4;
+            border-color: #fac900;
+            background-color: #fac900;
+            //color: white;
+            color: #00014a;
             font-weight: 600;
+            //add
+            width: 30%;
+            padding: 15px 40px;
+            border-radius: 5px;
             &:before {
                 content: '✓';
                 font-size: 12px;

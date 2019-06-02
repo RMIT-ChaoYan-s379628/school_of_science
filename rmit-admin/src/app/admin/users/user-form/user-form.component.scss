@@ -4,11 +4,16 @@
     @extend %box-shadow;
     padding: 20px;
     border-radius: 5px;
+    //add
+    box-shadow: none;
+    background-color: rgba(255,255,255,1);
 
     &__header {
         font-size: 24px;
         text-transform: uppercase;
         margin-bottom: 14px;
+        //add
+        color: #e60028;
     }
 
     &__form {
@@ -35,7 +40,8 @@
     &__add-user {
         height: 40px;
         padding: 0 40px;
-        background: #1b811b;
+        //background: #1b811b;
+        background: #00014A;
         border: none;
         color: white;
         border-radius: 5px;

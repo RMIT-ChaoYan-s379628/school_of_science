@@ -15,6 +15,8 @@
     &__header {
         font-size: 25px;
         margin-bottom: 10px;
+        //add
+        color: #FFFFFF;
     }
 
     &__item {
@@ -23,11 +25,17 @@
         align-items: center;
         min-height: 60px;
         padding: 5px 10px;
+        //add
+        background: #FFFFFF;
         &:nth-child(odd) {
-            background-color: #eeeeee;
+            //background-color: #eeeeee;
+            background-color: #ffffff;
         }
         &--header {
-            background-color: #003f5c !important;
+            //add border-radius
+            border-radius: 5px 5px 0 0;
+            //background-color: #003f5c !important;
+            background-color: #e60028 !important;
             color: white;
             font-weight: 800;
 
@@ -37,7 +45,10 @@
         }
 
         &--add {
-            background: #eeeeee !important;
+            //background: #eeeeee !important;
+            background: #ffffff !important;
+            //add border-radius
+            border-radius: 5px;
             margin-bottom: 30px;
             padding: 20px 10px;
         }
@@ -47,11 +58,14 @@
         display: flex;
         flex: 0 0 40%;
         flex-direction: column;
+        //add
+        color: #00014a;
 
         &>input {
             height: 40px;
             width: 80%;
-            border: 1px solid gray;
+            //border: 1px solid gray;
+            border: 1px solid #00014a;
             border-radius: 5px;
             outline: none;
             font-size: 20px;
@@ -68,7 +82,8 @@
             height: 40px;
             padding: 0 20px;
             color: white;
-            background: #026C7C;
+            //background: #026C7C;
+            background: #00014a;
             border: none;
             width: 100%;
             border-radius: 5px;

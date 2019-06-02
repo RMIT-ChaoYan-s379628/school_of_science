@@ -16,13 +16,19 @@
 
     &__header {
         margin-top: 30px;
+        //add
+        color: #FFFFFF;
     }
     &__item {
         width: 250px;
         height: 250px;
         flex: 0 0 auto;
         box-sizing: border-box;
-        border: 10px solid greenyellow;
+        //border: 10px solid greenyellow;
+        border: 10px solid rgba(230,6,40,1) !important;
+        background-color: rgba(230,6,40,0.9);
+        color: white;
+
         border-radius: 50%;
         display: flex;
         justify-content: center;
